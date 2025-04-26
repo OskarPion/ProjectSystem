@@ -1,0 +1,11 @@
+<header>
+    <h1>Employee Health Monitor</h1>
+    <nav>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('accounts.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('accounts.login') }}">Login</a> |
+            <a href="{{ url_for('accounts.register') }}">Register</a>
+        {% endif %}
+    </nav>
+</header>
