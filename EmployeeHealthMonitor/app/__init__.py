@@ -46,7 +46,7 @@ def create_app():
     # Домашняя страница
     @app.route('/')
     def index():
-        return render_template('index.html')
+        return render_template('login.html')
 
     # Регистрация Blueprints
     app.register_blueprint(accounts_bp,   url_prefix='/accounts')
