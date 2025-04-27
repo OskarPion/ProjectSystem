@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль пользователя</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            min-height: 100vh;
+        }
+        .card {
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Навбар -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Health Monitor</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="dashboard.html">Главная</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="profile.html">Профиль</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="add_data.html">Добавить данные</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="health_chart.html">Анализ здоровья</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Выход</a>
+            </li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Контент профиля -->
+<div class="container my-5">
+  <h1 class="mb-4 text-white text-center">Профиль</h1>
+  <div class="card p-4">
+    <h5>Имя: Иван Иванов</h5>
+    <h5>Возраст: 29 лет</h5>
+    <h5>Рост: 175 см</h5>
+    <h5>Вес: 85 кг</h5>
+
+    <div class="alert alert-info mt-4">
+      Совет ИИ: Рекомендуется увеличить физическую активность и следить за питанием.
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
