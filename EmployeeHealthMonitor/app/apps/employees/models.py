@@ -7,7 +7,8 @@ class Employee(db.Model):
     name = db.Column(db.String(150), nullable=False)
     position = db.Column(db.String(100))
     hire_date = db.Column(db.Date)
-    user = db.relationship('User', backref='employees')
-
+    user = db.relationship('User', back_populates='employee')
+    health_records = db.relationship('HealthData', back_populates='employee')
+    
     def __repr__(self):
-        return f'<Employee {self.name}>'
+        return f'<Employee {self.full_name}>'

@@ -1,99 +1,140 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Дашборд | Health Monitor</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #74ebd5, #acb6e5);
-            min-height: 100vh;
-        }
-        .card {
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
 
-<!-- Навбар -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Health Monitor</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">Главная</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Профиль</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="add_data.html">Добавить данные</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="health_chart.html">Анализ здоровья</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html">Выход</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+{% block title %}Дашборд | Health Monitor{% endblock %}
 
+{% block content %}
 <div class="container">
     <h1 class="mb-4 text-center text-white">Дашборд здоровья сотрудников</h1>
 
-    <div class="row g-4">
+    <!-- Карточки с показателями -->
+    <div class="row g-3 mb-5">
         <div class="col-md-6 col-lg-4">
-            <div class="card p-3">
-                <h5 class="card-title">Средний возраст сотрудников</h5>
-                <p class="card-text fs-3 text-primary">35 лет</p>
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Средний возраст сотрудников</h5>
+                    <p class="card-text fs-3 text-primary mt-auto">35 лет</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <div class="card p-3">
-                <h5 class="card-title">Общий уровень заболеваемости</h5>
-                <p class="card-text fs-3 text-danger">12%</p>
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Общий уровень заболеваемости</h5>
+                    <p class="card-text fs-3 text-danger mt-auto">12%</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <div class="card p-3">
-                <h5 class="card-title">Рекомендации</h5>
-                <p class="card-text fs-5">Повысить активность сотрудников</p>
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Рекомендации</h5>
+                    <p class="card-text fs-5 mt-auto">Повысить активность сотрудников</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <div class="card p-3">
-                <h5 class="card-title">Средний ИМТ (индекс массы тела)</h5>
-                <p class="card-text fs-3 text-success">24.5</p>
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Средний ИМТ</h5>
+                    <p class="card-text fs-3 text-success mt-auto">24.5</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <div class="card p-3">
-                <h5 class="card-title">Доля сотрудников с хроническими заболеваниями</h5>
-                <p class="card-text fs-3 text-warning">7%</p>
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Хронические заболевания</h5>
+                    <p class="card-text fs-3 text-warning mt-auto">7%</p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <div class="card p-3">
-                <h5 class="card-title">Последний отчет</h5>
-                <a href="#" class="btn btn-outline-primary mt-2">Смотреть</a>
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Последний отчет</h5>
+                    <a href="#" class="btn btn-outline-primary mt-auto align-self-start">Смотреть</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подробная таблица данных -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5 class="mb-0">Данные сотрудников</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ФИО</th>
+                            <th>Должность</th>
+                            <th>Дата рождения</th>
+                            <th>Рост</th>
+                            <th>Вес</th>
+                            <th>ИМТ</th>
+                            <th>Давление</th>
+                            <th>Пульс</th>
+                            <th>Заболевания</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for health in health_data %}
+                        <tr>
+                            <td>{{ employee.user.last_name }} {{ employee.user.first_name }} {{ employee.user.middle_name }}</td>
+                            <td>{{ employee.position }}</td>
+                            <td>{{ employee.user.birth_date or '-' }}</td>
+                            <td>{{ employee.health_records.height}} см</td>
+                            <td>{{ employee.health_records.weight if employee.health_records else '-' }} кг</td>
+                            <td>
+                                {% if employee.health_records and employee.health_records.bmi %}
+                                    {{ "%.1f"|format(employee.health_records.bmi) }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if employee.health_records %}
+                                    {{ employee.health_records.systolic }}/{{ employee.health_records.diastolic }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            <td>{{ employee.health_records.heart_rate if employee.health_records else '-' }}</td>
+                            <td>{{ employee.chronic_diseases or '-' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<style>
+    .card {
+        min-height: 180px;
+        transition: transform 0.2s;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+    .table th {
+        white-space: nowrap;
+        position: sticky;
+        top: 0;
+        background-color: #f8f9fa;
+    }
+    .table-responsive {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+</style>
+{% endblock %}

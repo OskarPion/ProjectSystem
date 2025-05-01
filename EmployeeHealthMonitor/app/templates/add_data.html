@@ -1,75 +1,86 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Добавить данные о здоровье</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #74ebd5, #acb6e5);
-            min-height: 100vh;
-        }
-        .card {
-            border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Health Monitor</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="dashboard.html">Главная</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile.html">Профиль</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="add_data.html">Добавить данные</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="health_chart.html">Анализ здоровья</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Выход</a>
-            </li>
-        </ul>
-    </div>
-  </div>
-</nav>
+{% block title %}Добавить данные о здоровье{% endblock %}
 
+{% block content %}
 <div class="container my-5">
-  <h1 class="mb-4 text-white text-center">Добавить данные</h1>
+  <h1 class="mb-4 text-white text-center">
+    {% if health_data %}Редактировать данные{% else %}Добавить данные{% endif %}
+  </h1>
+  
   <div class="card p-4">
-    <form>
+    <form method="post" action="{{ url_for('health.add_data') }}" enctype="multipart/form-data">
       <div class="mb-3">
-        <label class="form-label">Температура тела (°C)</label>
-        <input type="number" class="form-control" placeholder="Например, 36.6">
+        <label class="form-label">Пол</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="male" 
+                 value="Мужской" {% if health_data and health_data.gender == 'Мужской' %}checked{% endif %} required>
+          <label class="form-check-label" for="male">Мужской</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="female" 
+                 value="Женский" {% if health_data and health_data.gender == 'Женский' %}checked{% endif %} required>
+          <label class="form-check-label" for="female">Женский</label>
+        </div>
       </div>
+
       <div class="mb-3">
-        <label class="form-label">Давление (мм рт. ст.)</label>
-        <input type="text" class="form-control" placeholder="Например, 120/80">
+        <label class="form-label">Рост (см)</label>
+        <input type="number" class="form-control" name="height" 
+               placeholder="Ваш рост" value="{{ health_data.height if health_data }}" required>
       </div>
+
       <div class="mb-3">
         <label class="form-label">Вес (кг)</label>
-        <input type="number" class="form-control" placeholder="Ваш вес">
+        <input type="number" class="form-control" name="weight" 
+               placeholder="Ваш вес" value="{{ health_data.weight if health_data }}" required>
       </div>
+
+      <div class="mb-3">
+        <label class="form-label">Температура тела (°C)</label>
+        <input type="number" step="0.1" class="form-control" name="temperature" 
+               placeholder="Например, 36.6" value="{{ health_data.temperature if health_data }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Систолическое давление (мм рт. ст.)</label>
+        <input type="number" class="form-control" name="systolic" 
+               placeholder="Например, 120" value="{{ health_data.systolic if health_data }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Диастолическое давление (мм рт. ст.)</label>
+        <input type="number" class="form-control" name="diastolic" 
+               placeholder="Например, 80" value="{{ health_data.diastolic if health_data }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Пульс (уд./мин)</label>
+        <input type="number" class="form-control" name="heart_rate" 
+               placeholder="Например, 70" value="{{ health_data.heart_rate if health_data }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Уровень кислорода в крови (%)</label>
+        <input type="number" class="form-control" name="blood_oxygen" 
+               placeholder="Например, 97" value="{{ health_data.blood_oxygen if health_data }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Индекс массы тела (кг/м2)</label>
+        <input type="number" step="0.1" class="form-control" name="bmi" 
+               placeholder="Например, 23.3" value="{{ health_data.bmi if health_data }}" required>
+      </div>
+
       <div class="mb-3">
         <label class="form-label">Файл с медицинскими данными (CSV)</label>
-        <input type="file" class="form-control">
+        <input type="file" class="form-control" name="medical_file">
       </div>
-      <button type="submit" class="btn btn-success w-100">Сохранить данные</button>
+
+      <button type="submit" class="btn btn-success w-100">
+        {% if health_data %}Обновить данные{% else %}Сохранить данные{% endif %}
+      </button>
     </form>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}
