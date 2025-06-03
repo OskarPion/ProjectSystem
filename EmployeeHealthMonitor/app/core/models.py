@@ -1,6 +1,6 @@
 # app/core/models.py
 
-from app.extensions import db
+from EmployeeHealthMonitor.app.extensions import db
 
 class Disease(db.Model):
     __tablename__ = 'diseases'

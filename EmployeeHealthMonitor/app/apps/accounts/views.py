@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.extensions import db
+from EmployeeHealthMonitor.app.extensions import db
 from ..accounts.models import User
 from ..accounts.serializers import UserSchema
 from flask_login import login_user, logout_user, login_required

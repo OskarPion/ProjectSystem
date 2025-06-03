@@ -1,6 +1,6 @@
-from app.extensions import celery, db
-from app.analytics.ml_models import DiseaseRiskModel
-from app.health.models import HealthData
+from EmployeeHealthMonitor.app.extensions import celery, db
+from EmployeeHealthMonitor.app.apps.analytics.ml_models import DiseaseRiskModel
+from EmployeeHealthMonitor.app.apps.health.models import HealthData
 
 @celery.task()
 def train_risk_model():

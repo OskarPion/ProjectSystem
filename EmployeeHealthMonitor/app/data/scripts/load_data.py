@@ -1,9 +1,9 @@
 import csv
 import os
 import datetime
-from app import create_app
-from app.extensions import db
-from app.apps.health.models import HealthData
+from EmployeeHealthMonitor.app import create_app
+from EmployeeHealthMonitor.app.extensions import db
+from EmployeeHealthMonitor.app.apps.health.models import HealthData
 
 def load_csv(filepath):
     if not os.path.exists(filepath):

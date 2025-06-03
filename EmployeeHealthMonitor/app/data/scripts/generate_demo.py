@@ -1,10 +1,10 @@
-from app import create_app
-from app.extensions import db
-from app.apps.accounts.models import User
-from app.apps.employees.models import Employee
-from app.apps.health.models import HealthData
-from app.apps.reports.models import Report
-from app.core.models import Disease   # <--- ДОБАВИТЬ
+from EmployeeHealthMonitor.app import create_app
+from EmployeeHealthMonitor.app.extensions import db
+from EmployeeHealthMonitor.app.apps.accounts.models import User
+from EmployeeHealthMonitor.app.apps.employees.models import Employee
+from EmployeeHealthMonitor.app.apps.health.models import HealthData
+from EmployeeHealthMonitor.app.apps.reports.models import Report
+from EmployeeHealthMonitor.app.core.models import Disease   # <--- ДОБАВИТЬ
 from faker import Faker
 import random
 import datetime

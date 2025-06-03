@@ -1,4 +1,4 @@
-from app.extensions import db
+from EmployeeHealthMonitor.app.extensions import db
 
 class Employee(db.Model):
     __tablename__ = 'employees'

@@ -1,4 +1,4 @@
-from app.extensions import ma
+from EmployeeHealthMonitor.app.extensions import ma
 from ..reports.models import Report
 
 class ReportSchema(ma.SQLAlchemyAutoSchema):

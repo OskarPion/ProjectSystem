@@ -1,7 +1,7 @@
 # app/apps/reports/models.py
 
-from app.extensions import db
-from app.core.models import Disease   # ВАЖНО! Импортируем Disease до Report
+from EmployeeHealthMonitor.app.extensions import db
+from EmployeeHealthMonitor.app.core.models import Disease   # ВАЖНО! Импортируем Disease до Report
 
 class Report(db.Model):
     __tablename__ = 'reports'

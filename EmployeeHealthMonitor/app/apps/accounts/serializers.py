@@ -1,4 +1,4 @@
-from app.extensions import ma
+from EmployeeHealthMonitor.app.extensions import ma
 from ..accounts.models import User
 
 class UserSchema(ma.SQLAlchemyAutoSchema):

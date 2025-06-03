@@ -1,7 +1,7 @@
 # app/data/scripts/reset_db.py
 
-from app import create_app
-from app.extensions import db
+from EmployeeHealthMonitor.app import create_app
+from EmployeeHealthMonitor.app.extensions import db
 
 def reset_database():
     app = create_app()

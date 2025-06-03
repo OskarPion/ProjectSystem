@@ -1,4 +1,4 @@
-from app.extensions import ma
+from EmployeeHealthMonitor.app.extensions import ma
 from ..health.models import HealthData
 
 class HealthDataSchema(ma.SQLAlchemyAutoSchema):

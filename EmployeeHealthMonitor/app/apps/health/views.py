@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.extensions import db
+from EmployeeHealthMonitor.app.extensions import db
 from ..health.models import HealthData
 from ..health.serializers import HealthDataSchema
 from flask_login import login_required
